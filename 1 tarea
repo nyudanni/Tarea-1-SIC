@@ -1,0 +1,57 @@
+def cajero_automatico():
+    saldo = 5000  # Saldo inicial
+
+    print("¡Bienvenidos al simulador de cajero automático!")
+    numero_cuenta = input("Por favor, introduzca su número de cuenta para continuar: ")
+
+    while True:
+        # Menú de opciones
+        print("Estimado estudiante, este cajero automático es capaz de realizar diferentes operaciones. Por favor, seleccione la opción deseada:")
+        print("1. Consultar saldo")
+        print("2. Retirar dinero")
+        print("3. Depositar dinero")
+        print("4. Transferir dinero a otra cuenta")
+
+        opcion = int(input("Por favor, ingrese el número correspondiente a la opción elegida: "))
+
+        # Consultar saldo
+        if opcion == 1:
+            print(f"¡Su saldo actual es de ${saldo}! ¡Gracias por consultar!")
+        
+        # Retirar dinero
+        elif opcion == 2:
+            cantidad = int(input("Por favor, ingrese la cantidad a retirar: "))
+            if cantidad <= saldo:
+                saldo -= cantidad
+                print(f"¡Retiro exitoso! Ha retirado ${cantidad}. Su nuevo saldo es de ${saldo}.")
+            else:
+                print("Fondos insuficientes para realizar el retiro.")
+        
+        # Depositar dinero
+        elif opcion == 3:
+            cantidad = int(input("Por favor, ingrese la cantidad a depositar: "))
+            saldo += cantidad
+            print(f"¡Depósito exitoso! Ha depositado ${cantidad}. Su nuevo saldo es de ${saldo}.")
+        
+        # Transferir dinero a otra cuenta
+        elif opcion == 4:
+            cuenta_destino = input("Por favor, ingrese el número de cuenta de destino: ")
+            cantidad = int(input("Por favor, ingrese la cantidad a transferir: "))
+            if cantidad <= saldo:
+                saldo -= cantidad
+                print(f"¡Transferencia exitosa! Ha transferido ${cantidad} a la cuenta {cuenta_destino}. Su nuevo saldo es de ${saldo}.")
+            else:
+                print("Fondos insuficientes para realizar la transferencia.")
+        
+        # Opción no válida
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
+
+        # Preguntar al usuario si desea realizar otra operación
+        continuar = input("¿Desea realizar otra operación? (s/n): ")
+        if continuar != 's' and continuar != 'S':
+            print("¡Gracias por utilizar nuestro simulador de cajero automático! ¡Hasta luego!")
+            break
+
+# Ejecutar la función del cajero automático
+cajero_automatico()
